@@ -907,92 +907,230 @@
     <div class="post-close-bar"><button onclick="closePost()">✕ Close</button></div>
     <div id="post-content"></div>
   </div>
+<script>
+/* ─────────────────────────────────────────────
+   BASIC UTILITIES
+───────────────────────────────────────────── */
 
-  <script>
-    // ── NAV SCROLL ──
-    window.addEventListener('scroll', () => {
-      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
-    });
+async function fetchJSON(path) {
+  const res = await fetch(path);
+  if (!res.ok) {
+    console.warn("Failed to load:", path);
+    return null;
+  }
+  return res.json();
+}
 
-    // ── HAMBURGER ──
-    let menuOpen = false;
-    function toggleMenu() {
-      menuOpen = !menuOpen;
-      document.getElementById('hamburger').classList.toggle('open', menuOpen);
-      const mn = document.getElementById('mobile-nav');
-      mn.style.display = menuOpen ? 'flex' : 'none';
-      setTimeout(() => mn.classList.toggle('open', menuOpen), 10);
-      document.body.style.overflow = menuOpen ? 'hidden' : '';
-    }
-    function closeMenu() {
-      menuOpen = false;
-      document.getElementById('hamburger').classList.remove('open');
-      const mn = document.getElementById('mobile-nav');
-      mn.classList.remove('open');
-      setTimeout(() => { mn.style.display = 'none'; }, 300);
-      document.body.style.overflow = '';
-    }
+/* ─────────────────────────────────────────────
+   NAV SCROLL
+───────────────────────────────────────────── */
 
-    // ── SCROLL REVEAL ──
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal, .exp-card').forEach(el => observer.observe(el));
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav')
+    .classList.toggle('scrolled', window.scrollY > 60);
+});
 
-    // ── WRITING POSTS ──
-    const posts = [
-      {
-        tag: 'Consumer Research',
-        title: 'What 1,600 conversations taught me about listening at scale',
-        body: `Running the largest consumer study in P&G India's Feminine Care history, I expected the challenge to be logistical. Recruiting 1,600 participants across diverse geographies. Designing instruments that would hold up at scale. Managing the analysis.\n\nThe harder thing was simpler: staying honest about what we were actually hearing.\n\nLarge-scale research has a way of making you feel confident. The sample sizes are big. The charts look decisive. The numbers give you permission to act. And that confidence can quietly turn into a kind of selective hearing — where you look for the data that confirms the direction you were already heading, and smooth over the friction that doesn't fit the story.\n\nWhat I learned from that study wasn't primarily about Feminine Care. It was about the discipline of genuinely listening — of designing research that surfaces what's inconvenient, not just what's useful. Of building space in the process to sit with ambiguity before collapsing it into a recommendation.\n\nThe portfolio simplification that came out of that work was only possible because we'd genuinely heard people telling us that less was more. Not because we'd hoped they'd say that, but because we'd designed the research to let them.`
-      },
-      {
-        tag: 'Innovation',
-        title: 'Why building R&D capability is a leadership problem, not a technical one',
-        body: `When P&G India decided to establish its first in-house consumer research lab in Goa, the conversations at the start were almost entirely technical. What equipment do we need? What methodology? What IT infrastructure?\n\nThose questions mattered. But they weren't the hard ones.\n\nThe hard question was: how do you get a global organisation — one with deep institutional habits, existing vendor relationships, and strong opinions about how things should be done — to genuinely invest in a new way of working in a market it doesn't fully understand yet?\n\nBuilding the lab took months. Getting people to trust the lab, to route their most important innovation questions through it rather than defaulting to global, took longer. And that was a leadership challenge, not a technical one.\n\nWhat eventually worked was evidence, accumulated slowly. Showing that the lab could turn insights around faster. That the findings were sharper because the consumers were local. That the cost model was better. And then — crucially — getting the right people to talk about it.\n\nThe Global CTO recognising the capability and expanding the model across P&G globally wasn't the goal at the start. It was the result of making something genuinely useful, and making sure the right people saw it being useful.\n\nThe lesson: capability building is change management. The technical problem is usually easier than the human one.`
-      },
-      {
-        tag: 'Impact',
-        title: 'The skills that make you good at business make you good at social impact too',
-        body: `I've heard the idea that business skills don't translate to the social sector. That the incentives are different, the constraints are different, the measures of success are different — and so the toolkit is different.\n\nI think this is mostly wrong.\n\nWhen I built the geo-expansion model for Reap Benefit — trying to help a civic tech NGO identify where to take their incubation programme next — the work looked a lot like competitive intelligence modelling. You gather the data available. You define what you're optimising for. You build a framework that's honest about what you know and what you're assuming. You present it in a way that gives decision-makers genuine choices rather than false certainty.\n\nThe values were different. The context was different. But the rigour was the same.\n\nThe same was true at The Circle India, building a selection model for an entrepreneur cohort. Or at IIT-Bombay, designing a language support programme for incoming students. In each case, the question was the same as it is in product work: what does this person actually need, and what's the most honest and effective way to give it to them?\n\nI'm not saying business experience is a substitute for deep sector knowledge. It isn't. But systems thinking, empathy, rigour, and the ability to make decisions under uncertainty — these are not business skills. They're just good thinking. And good thinking is useful everywhere.`
-      }
-    ];
+/* ─────────────────────────────────────────────
+   HAMBURGER
+───────────────────────────────────────────── */
 
-    function openPost(i) {
-      const p = posts[i];
-      const html = p.body.split('\n\n').map(para => `<p>${para}</p>`).join('');
-      document.getElementById('post-content').innerHTML = `
-        <p class="post-tag">${p.tag}</p>
-        <h2 class="post-title">${p.title}</h2>
-        <div class="post-body">${html}</div>
-      `;
-      document.getElementById('post-overlay').classList.add('open');
-      document.getElementById('post-panel').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closePost() {
-      document.getElementById('post-overlay').classList.remove('open');
-      document.getElementById('post-panel').classList.remove('open');
-      document.body.style.overflow = '';
-    }
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  document.getElementById('hamburger').classList.toggle('open', menuOpen);
+  const mn = document.getElementById('mobile-nav');
+  mn.style.display = menuOpen ? 'flex' : 'none';
+  setTimeout(() => mn.classList.toggle('open', menuOpen), 10);
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+}
+function closeMenu() {
+  menuOpen = false;
+  document.getElementById('hamburger').classList.remove('open');
+  const mn = document.getElementById('mobile-nav');
+  mn.classList.remove('open');
+  setTimeout(() => { mn.style.display = 'none'; }, 300);
+  document.body.style.overflow = '';
+}
 
-    // ── FORM ──
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById('form-success').style.display = 'block';
-      e.target.reset();
-    }
+/* ─────────────────────────────────────────────
+   LOAD ABOUT
+───────────────────────────────────────────── */
 
-    // ── NETLIFY IDENTITY REDIRECT ──
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', user => {
-        if (!user) {
-          window.netlifyIdentity.on('login', () => {
-            document.location.href = '/admin/';
-          });
-        }
+async function loadAbout() {
+  const data = await fetchJSON('/content/about.json');
+  if (!data) return;
+
+  document.getElementById('about-p1').innerHTML = data.paragraph1;
+  document.getElementById('about-p2').innerHTML = data.paragraph2;
+  document.getElementById('about-p3').innerHTML = data.paragraph3;
+  document.getElementById('about-p4').innerHTML = data.paragraph4;
+
+  // Skills
+  const skillWrap = document.getElementById('about-skills');
+  skillWrap.innerHTML = '';
+
+  data.skills.forEach(section => {
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <p class="skill-label">${section.category}</p>
+      <div class="tag-wrap">
+        ${section.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+      </div>
+    `;
+    skillWrap.appendChild(div);
+  });
+}
+
+/* ─────────────────────────────────────────────
+   LOAD EXPERIENCE
+───────────────────────────────────────────── */
+
+async function loadExperience() {
+  const data = await fetchJSON('/content/experience.json');
+  if (!data) return;
+
+  const container = document.getElementById('exp-entries');
+  container.innerHTML = '';
+
+  data.roles.forEach(role => {
+    const card = document.createElement('div');
+    card.className = 'exp-card';
+
+    card.innerHTML = `
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">${role.title}</div>
+          <div class="exp-company">${role.company}</div>
+        </div>
+        <span class="exp-period">${role.period}</span>
+      </div>
+      <div class="exp-divider"></div>
+      <div class="exp-points">
+        ${role.points.map(p => `<div class="exp-point">${p}</div>`).join('')}
+      </div>
+      ${role.award ? `<div class="exp-award">${role.award}</div>` : ''}
+    `;
+    container.appendChild(card);
+  });
+}
+
+/* ─────────────────────────────────────────────
+   LOAD IMPACT
+───────────────────────────────────────────── */
+
+async function loadImpact() {
+  const data = await fetchJSON('/content/impact.json');
+  if (!data) return;
+
+  const grid = document.getElementById('impact-grid');
+  grid.innerHTML = '';
+
+  data.roles.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'impact-card';
+
+    card.innerHTML = `
+      <div class="impact-period">${item.period}</div>
+      <div class="impact-role">${item.title}</div>
+      <div class="impact-org">${item.org}</div>
+      <p class="impact-desc">${item.description}</p>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+/* ─────────────────────────────────────────────
+   LOAD BLOG POSTS (AUTO FROM FOLDER)
+───────────────────────────────────────────── */
+
+let posts = [];
+
+async function loadBlog() {
+  const blogIndex = await fetchJSON('/content/blog-index.json');
+  if (!blogIndex) return;
+
+  posts = blogIndex.posts;
+
+  const grid = document.getElementById('writing-grid');
+  grid.innerHTML = '';
+
+  posts.forEach((post, i) => {
+    const card = document.createElement('a');
+    card.className = 'writing-card';
+    card.href = '#';
+    card.onclick = () => { openPost(i); return false; };
+
+    card.innerHTML = `
+      <div class="writing-card-img"
+        style="background: linear-gradient(135deg, #3d3830, #c4622d);">
+      </div>
+      <div class="writing-card-body">
+        <p class="writing-tag">${post.tag}</p>
+        <h3 class="writing-title">${post.title}</h3>
+        <p class="writing-excerpt">${post.excerpt}</p>
+        <span class="writing-read">Read more →</span>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+function openPost(i) {
+  const p = posts[i];
+  const html = p.body.split('\n\n')
+    .map(para => `<p>${para}</p>`).join('');
+
+  document.getElementById('post-content').innerHTML = `
+    <p class="post-tag">${p.tag}</p>
+    <h2 class="post-title">${p.title}</h2>
+    <div class="post-body">${html}</div>
+  `;
+
+  document.getElementById('post-overlay').classList.add('open');
+  document.getElementById('post-panel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePost() {
+  document.getElementById('post-overlay').classList.remove('open');
+  document.getElementById('post-panel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ─────────────────────────────────────────────
+   FORM (still fake — no backend)
+───────────────────────────────────────────── */
+
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-success').style.display = 'block';
+  e.target.reset();
+}
+
+/* ─────────────────────────────────────────────
+   NETLIFY IDENTITY
+───────────────────────────────────────────── */
+
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', user => {
+    if (!user) {
+      window.netlifyIdentity.on('login', () => {
+        document.location.href = '/admin/';
       });
     }
-  </script>
+  });
+}
+
+/* ─────────────────────────────────────────────
+   INITIALISE EVERYTHING
+───────────────────────────────────────────── */
+
+loadAbout();
+loadExperience();
+loadImpact();
+loadBlog();
+
+</script>
 </body>
 </html>
