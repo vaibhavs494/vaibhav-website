@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vaibhav Shah — Product & Innovation Director. 9+ years at P&G building consumer-led innovation. Relocating to London." />
+  <title>Vaibhav Shah — Product, Innovation & Impact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    :root {
+      --paper:       #f7f4ef;
+      --paper-mid:   #ede9e2;
+      --paper-dark:  #ddd8cf;
+      --ink:         #1e1b18;
+      --ink-mid:     #3d3830;
+      --muted:       #7a7268;
+      --terra:       #c4622d;
+      --terra-light: #e8956d;
+      --terra-pale:  #f5ece6;
+      --white:       #fefcfa;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999;
+    }
+
+    /* ─────────────── NAV ─────────────── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 200;
+      padding: 1.2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(247,244,239,0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 20px rgba(30,27,24,0.07);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 300;
+      color: var(--ink); text-decoration: none; letter-spacing: -0.01em; z-index: 201;
+    }
+    .nav-logo em { font-style: italic; color: var(--terra); }
+
+    /* Desktop links */
+    .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+    .nav-links a {
+      text-decoration: none; font-size: 0.75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--terra); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px; z-index: 201;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--ink); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0;
+      background: var(--white); z-index: 199;
+      flex-direction: column; justify-content: center; align-items: center; gap: 2.5rem;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .mobile-nav.open { opacity: 1; }
+    .mobile-nav a {
+      text-decoration: none; font-family: 'Fraunces', serif;
+      font-size: 2rem; font-weight: 300; color: var(--ink);
+      letter-spacing: -0.02em; transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--terra); }
+    .mobile-nav-contact {
+      margin-top: 1rem; padding: 0.85rem 2rem;
+      background: var(--terra); color: var(--white) !important;
+      border-radius: 4px; font-size: 0.85rem !important;
+      font-family: 'DM Sans', sans-serif !important; letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Floating mobile CTA */
+    .mobile-cta {
+      display: none; position: fixed; bottom: 1.5rem; right: 1.5rem;
+      z-index: 150; background: var(--terra); color: var(--white);
+      border-radius: 50px; padding: 0.85rem 1.5rem;
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; box-shadow: 0 8px 24px rgba(196,98,45,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .mobile-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(196,98,45,0.4); }
+
+    /* ─────────────── HERO ─────────────── */
+    .hero {
+      min-height: 100svh;
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      padding: 9rem 4rem 5rem;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      border-right: 1px solid var(--paper-dark);
+      position: relative;
+    }
+    .hero-left::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(to right, var(--terra), transparent 70%);
+    }
+
+    .hero-overline {
+      font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--terra); margin-bottom: 1.75rem;
+      opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
+    }
+
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem, 5.5vw, 6rem);
+      font-weight: 200; line-height: 1.0; letter-spacing: -0.02em;
+      opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
+    }
+    .hero-name strong { display: block; font-weight: 400; }
+
+    .hero-role {
+      margin-top: 1.75rem;
+      font-family: 'Fraunces', serif; font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      font-weight: 300; font-style: italic; color: var(--muted); line-height: 1.5;
+      opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
+    }
+
+    .hero-desc {
+      margin-top: 1.25rem; font-size: 1rem; font-weight: 300;
+      line-height: 1.8; color: var(--ink-mid); max-width: 420px;
+      opacity: 0; animation: fadeUp 0.7s 0.65s forwards;
+    }
+
+    .hero-badge {
+      margin-top: 1.75rem; display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; color: var(--terra); background: var(--terra-pale);
+      padding: 0.45rem 1rem; border-radius: 100px; width: fit-content;
+      opacity: 0; animation: fadeUp 0.7s 0.8s forwards;
+    }
+
+    .hero-cta {
+      margin-top: 2.25rem; display: flex; gap: 0.85rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s 0.95s forwards;
+    }
+
+    .btn {
+      display: inline-block; padding: 0.85rem 1.75rem; border-radius: 4px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.75rem;
+      letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.3s; cursor: pointer; border: none;
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .btn-primary { background: var(--terra); color: var(--white); }
+    .btn-primary:hover { background: var(--terra-light); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; border: 1px solid var(--paper-dark); color: var(--ink-mid); }
+    .btn-ghost:hover { border-color: var(--terra); color: var(--terra); }
+
+    .hero-right {
+      background: var(--white); display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 9rem 3.5rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-right::before {
+      content: 'VS';
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-55%);
+      font-family: 'Fraunces', serif; font-size: 20vw; font-weight: 200;
+      color: var(--paper-mid); line-height: 1; pointer-events: none;
+      letter-spacing: -0.05em;
+      opacity: 0; animation: fadeIn 1.2s 0.5s forwards;
+    }
+
+    .hero-photo {
+      position: relative; z-index: 1; width: 100%; max-width: 340px; margin: 0 auto;
+      opacity: 0; animation: fadeIn 1s 0.7s forwards;
+    }
+    .hero-photo-inner {
+      width: 100%; aspect-ratio: 3/4;
+      border-radius: 4px 4px 60px 4px;
+      background: linear-gradient(160deg, var(--paper-mid), var(--terra-pale));
+      overflow: hidden; box-shadow: 0 20px 60px rgba(30,27,24,0.12);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-photo-inner img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-placeholder {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 1rem; padding: 2rem; text-align: center;
+    }
+    .photo-placeholder svg { width: 56px; opacity: 0.3; }
+    .photo-placeholder p { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+
+    .hero-creds {
+      position: relative; z-index: 1; margin-top: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .hero-cred {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.75rem; color: var(--muted);
+    }
+    .cred-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--terra); flex-shrink: 0; }
+
+    /* ─────────────── SHARED ─────────────── */
+    .section { padding: 7rem 5rem; }
+
+    .eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--terra); margin-bottom: 0.85rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .eyebrow::after { content: ''; flex: 1; max-width: 36px; height: 1px; background: var(--terra); }
+
+    .section-h {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 300; line-height: 1.15; color: var(--ink); letter-spacing: -0.02em;
+    }
+    .section-h em { font-style: italic; color: var(--terra); }
+
+    /* ─────────────── ABOUT ─────────────── */
+    .about {
+      background: var(--white);
+      display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 6rem; align-items: start;
+    }
+
+    .about-left { position: sticky; top: 7rem; }
+
+    .about-portrait {
+      width: 100%; aspect-ratio: 3/4; max-height: 400px;
+      border-radius: 4px 4px 60px 4px;
+      background: linear-gradient(160deg, var(--terra-pale), var(--paper-mid));
+      overflow: hidden; margin-bottom: 1.75rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
+
+    .about-callout {
+      background: var(--terra-pale); border-left: 3px solid var(--terra);
+      padding: 1.1rem 1.3rem; border-radius: 0 6px 6px 0;
+    }
+    .about-callout p { font-size: 0.82rem; line-height: 1.65; color: var(--ink-mid); }
+    .about-callout strong { color: var(--terra); }
+
+    .about-body p {
+      font-size: 1rem; font-weight: 300; line-height: 1.85;
+      color: var(--ink-mid); margin-top: 1.4rem;
+    }
+    .about-body strong { color: var(--ink); font-weight: 500; }
+
+    .skill-section { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
+    .skill-label {
+      font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.4rem;
+    }
+    .tag-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.73rem; padding: 0.32rem 0.85rem;
+      border-radius: 3px; border: 1px solid var(--paper-dark);
+      color: var(--ink-mid); background: var(--paper);
+    }
+    .tag-warm { border-color: var(--terra-light); color: var(--terra); background: var(--terra-pale); }
+
+    /* ─────────────── EXPERIENCE ─────────────── */
+    .experience { background: var(--paper); }
+
+    .exp-entries { margin-top: 3.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .exp-card {
+      background: var(--white); border: 1px solid var(--paper-dark);
+      border-radius: 8px; padding: 2.25rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      opacity: 0; transform: translateY(18px); transition: opacity 0.55s, transform 0.55s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .exp-card.visible { opacity: 1; transform: translateY(0); }
+    .exp-card:hover { border-color: var(--terra-light); box-shadow: 0 6px 28px rgba(196,98,45,0.08); }
+
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+
+    .exp-role {
+      font-family: 'Fraunces', serif; font-size: 1.25rem;
+      font-weight: 400; color: var(--ink); line-height: 1.25;
+    }
+    .exp-company { margin-top: 0.25rem; font-size: 0.82rem; color: var(--muted); }
+    .exp-period {
+      font-size: 0.7rem; letter-spacing: 0.1em; color: var(--terra);
+      background: var(--terra-pale); padding: 0.3rem 0.8rem;
+      border-radius: 100px; white-space: nowrap; flex-shrink: 0;
+    }
+
+    .exp-divider { width: 28px; height: 1px; background: var(--paper-dark); margin: 1.1rem 0; }
+
+    .exp-points { display: flex; flex-direction: column; gap: 0.65rem; }
+    .exp-point {
+      display: flex; gap: 0.7rem;
+      font-size: 0.93rem; font-weight: 300; line-height: 1.7; color: var(--ink-mid);
+    }
+    .exp-point::before { content: '—'; color: var(--terra); flex-shrink: 0; margin-top: 0.05rem; }
+
+    .exp-award {
+      margin-top: 1.1rem; padding: 0.8rem 1rem;
+      background: var(--terra-pale); border-radius: 5px;
+      font-size: 0.77rem; color: var(--terra);
+      display: flex; gap: 0.5rem; align-items: flex-start; line-height: 1.5;
+    }
+    .exp-award::before { content: '▸'; flex-shrink: 0; }
+
+    /* ─────────────── IMPACT ─────────────── */
+    .impact { background: var(--ink); position: relative; overflow: hidden; }
+    .impact::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 0%, rgba(196,98,45,0.14), transparent 55%);
+      pointer-events: none;
+    }
+    .impact .eyebrow { color: var(--terra-light); }
+    .impact .eyebrow::after { background: var(--terra-light); }
+    .impact .section-h { color: var(--white); }
+    .impact .section-h em { color: var(--terra-light); }
+    .impact-intro {
+      margin-top: 1.25rem; font-size: 0.98rem; font-weight: 300;
+      line-height: 1.8; color: rgba(255,255,255,0.5); max-width: 520px;
+    }
+
+    .impact-grid {
+      margin-top: 3.5rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .impact-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px; padding: 1.75rem; transition: all 0.3s;
+    }
+    .impact-card:hover { background: rgba(196,98,45,0.1); border-color: rgba(196,98,45,0.3); transform: translateY(-4px); }
+    .impact-card.wide { grid-column: span 3; }
+    .impact-period { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra-light); margin-bottom: 0.65rem; }
+    .impact-role { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 300; color: var(--white); line-height: 1.3; }
+    .impact-org { font-size: 0.75rem; color: rgba(255,255,255,0.38); margin-top: 0.25rem; }
+    .impact-desc { margin-top: 0.9rem; font-size: 0.86rem; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.52); }
+
+    /* ─────────────── WRITING ─────────────── */
+    .writing { background: var(--white); }
+    .writing-intro {
+      margin-top: 1.25rem; font-size: 0.98rem; font-weight: 300;
+      line-height: 1.8; color: var(--muted); max-width: 500px;
+    }
+
+    .writing-grid {
+      margin-top: 3.5rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+
+    .writing-card {
+      border-radius: 8px; overflow: hidden; border: 1px solid var(--paper-dark);
+      transition: all 0.3s; cursor: pointer; display: block;
+      text-decoration: none; color: inherit;
+    }
+    .writing-card:hover { border-color: var(--terra-light); box-shadow: 0 10px 36px rgba(196,98,45,0.1); transform: translateY(-4px); }
+
+    .writing-card-img {
+      height: 160px; position: relative; overflow: hidden;
+    }
+    .writing-card-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(30,27,24,0.45), transparent);
+    }
+
+    .writing-card-body { padding: 1.4rem; background: var(--paper); }
+    .writing-tag { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.5rem; }
+    .writing-title { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 400; color: var(--ink); line-height: 1.3; }
+    .writing-excerpt { margin-top: 0.6rem; font-size: 0.83rem; font-weight: 300; line-height: 1.7; color: var(--muted); }
+    .writing-read { margin-top: 1rem; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra); display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.3s; }
+    .writing-card:hover .writing-read { gap: 0.8rem; }
+
+    /* Post slide panel */
+    .post-overlay {
+      position: fixed; inset: 0; background: rgba(30,27,24,0.55); backdrop-filter: blur(4px);
+      z-index: 300; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .post-overlay.open { opacity: 1; pointer-events: all; }
+    .post-panel {
+      position: fixed; right: 0; top: 0; bottom: 0;
+      width: min(680px, 100vw); background: var(--white); z-index: 301;
+      overflow-y: auto; padding: 3.5rem;
+      transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .post-panel.open { transform: translateX(0); }
+    .post-close-bar { position: sticky; top: 0; display: flex; justify-content: flex-end; margin-bottom: 2rem; background: var(--white); padding-bottom: 0.75rem; }
+    .post-close-bar button {
+      background: none; border: 1px solid var(--paper-dark); border-radius: 100px;
+      padding: 0.5rem 1.2rem; font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.1em; color: var(--muted); cursor: pointer;
+      transition: all 0.2s; min-height: 44px;
+    }
+    .post-close-bar button:hover { background: var(--terra); color: white; border-color: var(--terra); }
+    .post-tag { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); }
+    .post-title { font-family: 'Fraunces', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 300; color: var(--ink); margin-top: 0.75rem; line-height: 1.2; }
+    .post-body { margin-top: 2rem; font-size: 0.97rem; font-weight: 300; line-height: 1.9; color: var(--ink-mid); }
+    .post-body p { margin-bottom: 1.2rem; }
+    .post-body h2 { font-family: 'Fraunces', serif; font-size: 1.35rem; color: var(--ink); margin: 2rem 0 0.75rem; font-weight: 400; }
+
+    /* ─────────────── CONTACT ─────────────── */
+    .contact { background: var(--paper); display: grid; grid-template-columns: 1fr 1fr; }
+
+    .contact-left {
+      padding: 6rem 4rem; background: var(--terra); position: relative; overflow: hidden;
+    }
+    .contact-left::before {
+      content: ''; position: absolute; bottom: -60px; right: -60px;
+      width: 260px; height: 260px; border-radius: 50%;
+      border: 50px solid rgba(255,255,255,0.06); pointer-events: none;
+    }
+    .contact-left .eyebrow { color: rgba(255,255,255,0.65); }
+    .contact-left .eyebrow::after { background: rgba(255,255,255,0.5); }
+    .contact-left .section-h { color: var(--white); }
+    .contact-left .section-h em { color: rgba(255,255,255,0.65); }
+    .contact-left > p {
+      margin-top: 1.25rem; font-size: 0.97rem; font-weight: 300;
+      line-height: 1.8; color: rgba(255,255,255,0.65); max-width: 360px;
+    }
+
+    .contact-links { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.9rem;
+      text-decoration: none; color: rgba(255,255,255,0.8);
+      font-size: 0.9rem; transition: color 0.3s; min-height: 44px;
+    }
+    .contact-link:hover { color: var(--white); }
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0; transition: background 0.3s;
+    }
+    .contact-link:hover .contact-icon { background: rgba(255,255,255,0.15); }
+
+    .contact-right { padding: 6rem 4rem; background: var(--white); }
+
+    .contact-form { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .form-group input, .form-group textarea {
+      padding: 0.85rem 1.1rem; border: 1px solid var(--paper-dark); border-radius: 4px;
+      background: var(--paper); font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; color: var(--ink); outline: none; transition: border-color 0.3s;
+      min-height: 44px;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--terra); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .btn-submit {
+      background: var(--ink); color: var(--white); border: none;
+      padding: 1rem 2.25rem; border-radius: 4px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      cursor: pointer; align-self: flex-start; transition: background 0.3s, transform 0.2s;
+      min-height: 44px;
+    }
+    .btn-submit:hover { background: var(--terra); transform: translateY(-2px); }
+
+    /* ─────────────── FOOTER ─────────────── */
+    footer {
+      background: var(--ink-mid, #3d3830); padding: 2.25rem 5rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 200; color: rgba(255,255,255,0.65); }
+    .footer-logo em { font-style: italic; color: var(--terra-light); }
+    footer p { font-size: 0.7rem; color: rgba(255,255,255,0.28); letter-spacing: 0.08em; }
+
+    /* ─────────────── ANIMATIONS ─────────────── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s, transform 0.6s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+    /* ─────────────── RESPONSIVE ─────────────── */
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .section { padding: 6rem 3.5rem; }
+      .about { grid-template-columns: 1fr 1.3fr; gap: 4rem; }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .impact-card.wide { grid-column: span 2; }
+      .writing-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact { grid-template-columns: 1fr; }
+      .contact-left, .contact-right { padding: 4.5rem 3.5rem; }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      /* Nav */
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+      .mobile-cta { display: flex; }
+
+      /* Hero — single column, content only */
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { display: none; }
+      .hero-left {
+        padding: 7rem 1.5rem 4rem;
+        border-right: none;
+      }
+      .hero-name { font-size: clamp(2.8rem, 11vw, 4rem); }
+      .hero-role { font-size: 0.95rem; margin-top: 1.25rem; }
+      .hero-desc { font-size: 0.97rem; max-width: 100%; }
+
+      /* Sections */
+      .section { padding: 4rem 1.5rem; }
+
+      /* About — stack */
+      .about { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-left { position: static; }
+      .about-portrait { max-height: 280px; aspect-ratio: 4/3; border-radius: 4px 4px 40px 4px; }
+
+      /* Experience */
+      .exp-card { padding: 1.5rem; }
+      .exp-header { flex-direction: column; gap: 0.5rem; }
+      .exp-role { font-size: 1.1rem; }
+
+      /* Impact */
+      .impact-grid { grid-template-columns: 1fr; }
+      .impact-card.wide { grid-column: span 1; }
+
+      /* Writing */
+      .writing-grid { grid-template-columns: 1fr; }
+
+      /* Contact */
+      .contact-left, .contact-right { padding: 3.5rem 1.5rem; }
+
+      /* Footer */
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; gap: 0.5rem; }
+
+      /* Post panel */
+      .post-panel { padding: 2rem 1.25rem; }
+
+      /* Section headings */
+      .section-h { font-size: 1.7rem; }
+    }
+
+    /* Small mobile */
+    @media (max-width: 400px) {
+      .hero-name { font-size: 2.5rem; }
+      .hero-cta { flex-direction: column; }
+      .hero-cta .btn { text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#" class="nav-logo">Vaibhav <em>Shah</em></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#experience" onclick="closeMenu()">Experience</a>
+    <a href="#impact" onclick="closeMenu()">Impact</a>
+    <a href="#writing" onclick="closeMenu()">Writing</a>
+    <a href="#contact" onclick="closeMenu()" class="mobile-nav-contact">Get in Touch</a>
+  </div>
+
+  <!-- FLOATING MOBILE CTA -->
+  <a href="#contact" class="mobile-cta">Contact Me</a>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-overline">Product · Innovation · Impact</p>
+      <h1 class="hero-name">Vaibhav<strong>Shah</strong></h1>
+      <p class="hero-role" id="hero-role">Director, Product &amp; Innovation · Procter &amp; Gamble</p>
+      <p class="hero-desc" id="hero-desc">Nine years building consumer-led innovation at scale, establishing R&D capabilities, and doing work that matters beyond the bottom line. Now bringing that to London.</p>
+      <div class="hero-badge">📍 Relocating to London, UK</div>
+      <div class="hero-cta">
+        <a href="#about" class="btn btn-primary">My Story</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo">
+        <div class="hero-photo-inner" id="hero-photo-inner">
+          <!-- Replace with: <img src="/uploads/vaibhav-photo.jpg" alt="Vaibhav Shah"> -->
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#c4622d" stroke-width="1.5">
+              <circle cx="32" cy="22" r="14"/>
+              <path d="M6 58 Q6 42 32 42 Q58 42 58 58"/>
+            </svg>
+            <p>Add your photo here</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-creds">
+        <div class="hero-cred"><div class="cred-dot"></div>IIT-Bombay · B.Tech Mechanical Engineering</div>
+        <div class="hero-cred"><div class="cred-dot"></div>P&G India · 9+ years, R&D to Director level</div>
+        <div class="hero-cred"><div class="cred-dot"></div>The Social Impact Collective · Head of Programme</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="about-left reveal">
+      <div class="about-portrait" id="about-portrait">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#c4622d" stroke-width="1.5">
+            <circle cx="32" cy="22" r="14"/>
+            <path d="M6 58 Q6 42 32 42 Q58 42 58 58"/>
+          </svg>
+          <p>Portrait photo</p>
+        </div>
+      </div>
+      <div class="about-callout">
+        <p><strong>IIT-JEE All India Rank 404.</strong> Top 0.05% of ~500,000 candidates. B.Tech from IIT-Bombay, GPA 8.97/10.</p>
+      </div>
+    </div>
+
+    <div class="about-body">
+      <div class="eyebrow reveal">About Me</div>
+      <h2 class="section-h reveal d1">The person<br/>behind the <em>work</em></h2>
+
+      <p class="reveal d2" id="about-p1">I'm a <strong>product and innovation leader</strong> who has spent the last nine years at P&G India building things that reach millions of people. From establishing the country's first connected consumer research lab in Goa, to launching products that address real gaps in women's health — I care deeply about the quality of what gets made and why.</p>
+      <p class="reveal d3" id="about-p2">My work sits at the intersection of <strong>consumer insight and commercial delivery</strong>. I've led large-scale quantitative research, built competitive intelligence models, managed full product lifecycles, and coached teams across functions. The thread throughout: genuine curiosity about what people need, and the discipline to build it well.</p>
+      <p class="reveal" id="about-p3">Beyond P&G, I give time to <strong>social impact work</strong> — from civic tech NGOs to education programmes at IIT-Bombay. I believe good business and good impact aren't opposites; they're the same thing, done with enough ambition.</p>
+      <p class="reveal" id="about-p4">I'm now <strong>relocating to London</strong> and actively exploring senior Innovation, R&D, or Consumer Insights Director roles.</p>
+
+      <div class="skill-section reveal" id="about-skills">
+        <div>
+          <p class="skill-label">Innovation &amp; Strategy</p>
+          <div class="tag-wrap">
+            <span class="tag tag-warm">End-to-end innovation</span>
+            <span class="tag tag-warm">Jobs-to-be-Done</span>
+            <span class="tag tag-warm">Portfolio management</span>
+            <span class="tag tag-warm">Fast-cycle development</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-label">Consumer &amp; Market Research</p>
+          <div class="tag-wrap">
+            <span class="tag">Large-scale quant &amp; qual</span>
+            <span class="tag">Behavioural science</span>
+            <span class="tag">Competitive intelligence</span>
+            <span class="tag">Kantar</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-label">Commercial Delivery</p>
+          <div class="tag-wrap">
+            <span class="tag">P&amp;L management</span>
+            <span class="tag">Go-to-market</span>
+            <span class="tag">Category growth</span>
+            <span class="tag">Stakeholder management</span>
+          </div>
+        </div>
+        <div>
+          <p class="skill-label">Languages</p>
+          <div class="tag-wrap">
+            <span class="tag">English</span>
+            <span class="tag">Hindi</span>
+            <span class="tag">Gujarati</span>
+            <span class="tag">Spanish (elementary)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section experience" id="experience">
+    <div class="eyebrow reveal">Career</div>
+    <h2 class="section-h reveal d1">Nine years of<br/><em>building things</em></h2>
+
+    <div class="exp-entries" id="exp-entries">
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Director, Feminine Care</div>
+            <div class="exp-company">Procter &amp; Gamble · India</div>
+          </div>
+          <span class="exp-period">Apr 2025 – Present</span>
+        </div>
+        <div class="exp-divider"></div>
+        <div class="exp-points">
+          <div class="exp-point">Launched Whisper Period Pants — designed around Indian consumer needs, executed rapidly via global supply chain expertise.</div>
+          <div class="exp-point">Led P&G India's largest-ever Feminine Care consumer research study — 1,600+ participants — reducing consumer friction through portfolio simplification.</div>
+          <div class="exp-point">Partnered with Pratham India on a Menstrual Hygiene curriculum reaching millions of adolescent girls across the country.</div>
+        </div>
+        <div class="exp-award">Recognised as P&G 'People First Champion' for coaching teams on consumer-led growth.</div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Group Head, Consumer Research — Feminine Care</div>
+            <div class="exp-company">Procter &amp; Gamble · India</div>
+          </div>
+          <span class="exp-period">Mar 2024 – Mar 2025</span>
+        </div>
+        <div class="exp-divider"></div>
+        <div class="exp-points">
+          <div class="exp-point">Drove Whisper to its highest-ever annual sales through the biggest product innovations in 10 years.</div>
+          <div class="exp-point">Built a predictive competitive intelligence model grounded in P&L and SWOT analysis to identify significant market opportunities.</div>
+        </div>
+        <div class="exp-award">Coached 7 individuals — average 20% improvement in performance ratings and 3 promotions within the team.</div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Manager, Consumer &amp; Products Research</div>
+            <div class="exp-company">Procter &amp; Gamble · India</div>
+          </div>
+          <span class="exp-period">Nov 2020 – Feb 2024</span>
+        </div>
+        <div class="exp-divider"></div>
+        <div class="exp-points">
+          <div class="exp-point">Built P&G India's R&D capability from the ground up — established a connected consumer infrastructure and in-house lab in Goa, delivering innovation 2× faster at 40% of prior cost.</div>
+          <div class="exp-point">Recognised by Global CTO; capability model subsequently expanded across P&G globally.</div>
+          <div class="exp-point">Moved 80% of the portfolio to product superiority (up from 12% in 2020) through sustained innovation over four consecutive years.</div>
+          <div class="exp-point">Led Whisper's first-ever College Programme, engaging 350,000+ girls per year to build long-term brand affinity.</div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Program Manager, Initiatives &amp; Savings</div>
+            <div class="exp-company">Procter &amp; Gamble · India</div>
+          </div>
+          <span class="exp-period">Jan 2019 – Nov 2020</span>
+        </div>
+        <div class="exp-divider"></div>
+        <div class="exp-points">
+          <div class="exp-point">End-to-end technical leader across R&D, Engineering, Procurement, and Manufacturing.</div>
+          <div class="exp-point">Piloted Growth Works methodology — cut design-to-shipment from an 11-month plan to 135 days, the fastest product launch in 10+ years.</div>
+        </div>
+        <div class="exp-award">P&G Asia &amp; Africa Annual Award — Best Performance in Product Supply.</div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Project Manager, Engineering</div>
+            <div class="exp-company">Procter &amp; Gamble · Feminine Care &amp; Fabric Care · India</div>
+          </div>
+          <span class="exp-period">Jul 2016 – Dec 2018</span>
+        </div>
+        <div class="exp-divider"></div>
+        <div class="exp-points">
+          <div class="exp-point">Expanded Whisper India manufacturing capacity by 24%, managing significant capex and leading 14 direct and 100+ indirect team members.</div>
+          <div class="exp-point">Delivered substantial savings through a tax-compliant asset redeployment process between P&G India and P&G China.</div>
+        </div>
+        <div class="exp-award">Best New Hire, P&G India (2017) · Intermediate Master, Cost Engineering.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL IMPACT -->
+  <section class="section impact" id="impact">
+    <div class="eyebrow reveal">Beyond the Day Job</div>
+    <h2 class="section-h reveal d1">Work that matters<br/><em>beyond the numbers</em></h2>
+    <p class="impact-intro reveal d2">I've always believed that the skills that make a good product leader — systems thinking, empathy, rigour — are just as useful in the social sector. These are the places I've chosen to put them.</p>
+
+    <div class="impact-grid" id="impact-grid">
+      <div class="impact-card reveal">
+        <div class="impact-period">Jan 2026 – Present</div>
+        <div class="impact-role">Head of Programme &amp; Operations</div>
+        <div class="impact-org">The Social Impact Collective · Remote</div>
+        <p class="impact-desc">Leading programme design, operations, and delivery for a social impact organisation focused on systemic change.</p>
+      </div>
+      <div class="impact-card reveal d1">
+        <div class="impact-period">Sep 2024 – Mar 2025</div>
+        <div class="impact-role">Volunteer — Geo-Expansion Strategy</div>
+        <div class="impact-org">Reap Benefit · Civic Engagement NGO</div>
+        <p class="impact-desc">Built a data-driven geo-expansion model to identify the next focus city for Reap Benefit's civic incubation programme across India.</p>
+      </div>
+      <div class="impact-card reveal d2">
+        <div class="impact-period">Apr 2022 – Jul 2022</div>
+        <div class="impact-role">Volunteer — Entrepreneur Selection</div>
+        <div class="impact-org">The Circle India · Education NGO</div>
+        <p class="impact-desc">Built the selection model for The Circle's inaugural two-year entrepreneur incubation programme cohort.</p>
+      </div>
+      <div class="impact-card wide reveal d3">
+        <div class="impact-period">Apr 2015 – Apr 2016</div>
+        <div class="impact-role">English Programme Lead · Institute Student Mentorship Programme</div>
+        <div class="impact-org">IIT-Bombay</div>
+        <p class="impact-desc">Led an English as a Second Language initiative enabling 300+ freshmen from vernacular backgrounds to integrate into IIT-Bombay's English-medium curriculum. One of the earliest things that showed me what systematic, empathetic design can do for people who just need a different kind of support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section class="section writing" id="writing">
+    <div class="eyebrow reveal">Thinking Out Loud</div>
+    <h2 class="section-h reveal d1">Ideas I keep<br/><em>coming back to</em></h2>
+    <p class="writing-intro reveal d2">Occasional writing on product, innovation, and what it means to build things that matter. No newsletter, no cadence — just when something is worth saying.</p>
+
+    <div class="writing-grid" id="writing-grid">
+      <a class="writing-card reveal" onclick="openPost(0); return false;" href="#">
+        <div class="writing-card-img" style="background: linear-gradient(135deg, #3d3830, #c4622d);"></div>
+        <div class="writing-card-body">
+          <p class="writing-tag">Consumer Research</p>
+          <h3 class="writing-title">What 1,600 conversations taught me about listening at scale</h3>
+          <p class="writing-excerpt">Running the largest consumer study in P&G India's Feminine Care history wasn't about the data. It was about building the discipline of actually listening.</p>
+          <span class="writing-read">Read more →</span>
+        </div>
+      </a>
+      <a class="writing-card reveal d1" onclick="openPost(1); return false;" href="#">
+        <div class="writing-card-img" style="background: linear-gradient(135deg, #c4622d, #b8a99a);"></div>
+        <div class="writing-card-body">
+          <p class="writing-tag">Innovation</p>
+          <h3 class="writing-title">Why building R&D capability is a leadership problem, not a technical one</h3>
+          <p class="writing-excerpt">When we set up P&G India's first in-house lab, the hardest part wasn't the equipment. It was convincing people that moving fast and doing it right aren't opposites.</p>
+          <span class="writing-read">Read more →</span>
+        </div>
+      </a>
+      <a class="writing-card reveal d2" onclick="openPost(2); return false;" href="#">
+        <div class="writing-card-img" style="background: linear-gradient(135deg, #4a5568, #c4622d);"></div>
+        <div class="writing-card-body">
+          <p class="writing-tag">Impact</p>
+          <h3 class="writing-title">The skills that make you good at business make you good at social impact too</h3>
+          <p class="writing-excerpt">Systems thinking, empathy, rigour — the same muscles. The only difference is what you're optimising for.</p>
+          <span class="writing-read">Read more →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-left">
+      <div class="eyebrow reveal">Get in Touch</div>
+      <h2 class="section-h reveal d1">Let's have<br/>a <em>real conversation</em></h2>
+      <p class="reveal d2">I'm actively exploring senior roles in London — Innovation, R&D, Consumer Insights, or anything at the intersection of all three. If something comes to mind, I'd genuinely love to hear from you.</p>
+      <div class="contact-links reveal d3">
+        <a href="mailto:vaibhav.s494@gmail.com" class="contact-link">
+          <div class="contact-icon">✉</div>vaibhav.s494@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/vaibhavshah144" target="_blank" class="contact-link">
+          <div class="contact-icon">in</div>linkedin.com/in/vaibhavshah144
+        </a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="eyebrow reveal">Send a Note</div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-group reveal">
+          <label>Your Name</label>
+          <input type="text" placeholder="Jane Smith" required />
+        </div>
+        <div class="form-group reveal d1">
+          <label>Email</label>
+          <input type="email" placeholder="jane@company.com" required />
+        </div>
+        <div class="form-group reveal d2">
+          <label>Message</label>
+          <textarea placeholder="Tell me about the role or opportunity…" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit reveal d3">Send Message</button>
+        <p id="form-success" style="display:none;color:var(--terra);font-size:0.85rem;margin-top:0.5rem;">✓ Sent — Vaibhav will be in touch.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Vaibhav <em>Shah</em></div>
+    <p>Product · Innovation · Impact · London, UK</p>
+    <p>© 2026</p>
+  </footer>
+
+  <!-- BLOG POST PANEL -->
+  <div class="post-overlay" id="post-overlay" onclick="closePost()"></div>
+  <div class="post-panel" id="post-panel">
+    <div class="post-close-bar"><button onclick="closePost()">✕ Close</button></div>
+    <div id="post-content"></div>
+  </div>
+
+  <script>
+    // ── NAV SCROLL ──
+    window.addEventListener('scroll', () => {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── HAMBURGER ──
+    let menuOpen = false;
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      document.getElementById('hamburger').classList.toggle('open', menuOpen);
+      const mn = document.getElementById('mobile-nav');
+      mn.style.display = menuOpen ? 'flex' : 'none';
+      setTimeout(() => mn.classList.toggle('open', menuOpen), 10);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+    }
+    function closeMenu() {
+      menuOpen = false;
+      document.getElementById('hamburger').classList.remove('open');
+      const mn = document.getElementById('mobile-nav');
+      mn.classList.remove('open');
+      setTimeout(() => { mn.style.display = 'none'; }, 300);
+      document.body.style.overflow = '';
+    }
+
+    // ── SCROLL REVEAL ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal, .exp-card').forEach(el => observer.observe(el));
+
+    // ── WRITING POSTS ──
+    const posts = [
+      {
+        tag: 'Consumer Research',
+        title: 'What 1,600 conversations taught me about listening at scale',
+        body: `Running the largest consumer study in P&G India's Feminine Care history, I expected the challenge to be logistical. Recruiting 1,600 participants across diverse geographies. Designing instruments that would hold up at scale. Managing the analysis.\n\nThe harder thing was simpler: staying honest about what we were actually hearing.\n\nLarge-scale research has a way of making you feel confident. The sample sizes are big. The charts look decisive. The numbers give you permission to act. And that confidence can quietly turn into a kind of selective hearing — where you look for the data that confirms the direction you were already heading, and smooth over the friction that doesn't fit the story.\n\nWhat I learned from that study wasn't primarily about Feminine Care. It was about the discipline of genuinely listening — of designing research that surfaces what's inconvenient, not just what's useful. Of building space in the process to sit with ambiguity before collapsing it into a recommendation.\n\nThe portfolio simplification that came out of that work was only possible because we'd genuinely heard people telling us that less was more. Not because we'd hoped they'd say that, but because we'd designed the research to let them.`
+      },
+      {
+        tag: 'Innovation',
+        title: 'Why building R&D capability is a leadership problem, not a technical one',
+        body: `When P&G India decided to establish its first in-house consumer research lab in Goa, the conversations at the start were almost entirely technical. What equipment do we need? What methodology? What IT infrastructure?\n\nThose questions mattered. But they weren't the hard ones.\n\nThe hard question was: how do you get a global organisation — one with deep institutional habits, existing vendor relationships, and strong opinions about how things should be done — to genuinely invest in a new way of working in a market it doesn't fully understand yet?\n\nBuilding the lab took months. Getting people to trust the lab, to route their most important innovation questions through it rather than defaulting to global, took longer. And that was a leadership challenge, not a technical one.\n\nWhat eventually worked was evidence, accumulated slowly. Showing that the lab could turn insights around faster. That the findings were sharper because the consumers were local. That the cost model was better. And then — crucially — getting the right people to talk about it.\n\nThe Global CTO recognising the capability and expanding the model across P&G globally wasn't the goal at the start. It was the result of making something genuinely useful, and making sure the right people saw it being useful.\n\nThe lesson: capability building is change management. The technical problem is usually easier than the human one.`
+      },
+      {
+        tag: 'Impact',
+        title: 'The skills that make you good at business make you good at social impact too',
+        body: `I've heard the idea that business skills don't translate to the social sector. That the incentives are different, the constraints are different, the measures of success are different — and so the toolkit is different.\n\nI think this is mostly wrong.\n\nWhen I built the geo-expansion model for Reap Benefit — trying to help a civic tech NGO identify where to take their incubation programme next — the work looked a lot like competitive intelligence modelling. You gather the data available. You define what you're optimising for. You build a framework that's honest about what you know and what you're assuming. You present it in a way that gives decision-makers genuine choices rather than false certainty.\n\nThe values were different. The context was different. But the rigour was the same.\n\nThe same was true at The Circle India, building a selection model for an entrepreneur cohort. Or at IIT-Bombay, designing a language support programme for incoming students. In each case, the question was the same as it is in product work: what does this person actually need, and what's the most honest and effective way to give it to them?\n\nI'm not saying business experience is a substitute for deep sector knowledge. It isn't. But systems thinking, empathy, rigour, and the ability to make decisions under uncertainty — these are not business skills. They're just good thinking. And good thinking is useful everywhere.`
+      }
+    ];
+
+    function openPost(i) {
+      const p = posts[i];
+      const html = p.body.split('\n\n').map(para => `<p>${para}</p>`).join('');
+      document.getElementById('post-content').innerHTML = `
+        <p class="post-tag">${p.tag}</p>
+        <h2 class="post-title">${p.title}</h2>
+        <div class="post-body">${html}</div>
+      `;
+      document.getElementById('post-overlay').classList.add('open');
+      document.getElementById('post-panel').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePost() {
+      document.getElementById('post-overlay').classList.remove('open');
+      document.getElementById('post-panel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── FORM ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+    }
+
+    // ── NETLIFY IDENTITY REDIRECT ──
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

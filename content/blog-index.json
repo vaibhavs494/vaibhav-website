@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "title": "What 1,600 conversations taught me about listening at scale",
+      "tag": "Consumer Research",
+      "excerpt": "Running the largest consumer study in P&G India's Feminine Care history wasn't about the data. It was about building the discipline of actually listening.",
+      "cover_css": "linear-gradient(135deg, #3d3830, #c4622d)",
+      "body": "Running the largest consumer study in P&G India's Feminine Care history, I expected the challenge to be logistical.\n\nThe harder thing was simpler: staying honest about what we were actually hearing.\n\nLarge-scale research has a way of making you feel confident. The sample sizes are big. The charts look decisive. The numbers give you permission to act. And that confidence can quietly turn into a kind of selective hearing.\n\nWhat I learned from that study wasn't primarily about Feminine Care. It was about the discipline of genuinely listening — of designing research that surfaces what's inconvenient, not just what's useful.\n\nThe portfolio simplification that came out of that work was only possible because we'd genuinely heard people telling us that less was more. Not because we'd hoped they'd say that, but because we'd designed the research to let them.",
+      "published": true
+    },
+    {
+      "title": "Why building R&D capability is a leadership problem, not a technical one",
+      "tag": "Innovation",
+      "excerpt": "When we set up P&G India's first in-house lab, the hardest part wasn't the equipment. It was convincing people that moving fast and doing it right aren't opposites.",
+      "cover_css": "linear-gradient(135deg, #c4622d, #b8a99a)",
+      "body": "When P&G India decided to establish its first in-house consumer research lab in Goa, the conversations at the start were almost entirely technical.\n\nThose questions mattered. But they weren't the hard ones.\n\nThe hard question was: how do you get a global organisation to genuinely invest in a new way of working in a market it doesn't fully understand yet?\n\nBuilding the lab took months. Getting people to trust the lab took longer. And that was a leadership challenge, not a technical one.\n\nWhat eventually worked was evidence, accumulated slowly. Showing that the lab could turn insights around faster. That the findings were sharper because the consumers were local. That the cost model was better.\n\nThe lesson: capability building is change management. The technical problem is usually easier than the human one.",
+      "published": true
+    },
+    {
+      "title": "The skills that make you good at business make you good at social impact too",
+      "tag": "Impact",
+      "excerpt": "Systems thinking, empathy, rigour — the same muscles. The only difference is what you're optimising for.",
+      "cover_css": "linear-gradient(135deg, #4a5568, #c4622d)",
+      "body": "I've heard the idea that business skills don't translate to the social sector. That the incentives are different, the constraints are different.\n\nI think this is mostly wrong.\n\nWhen I built the geo-expansion model for Reap Benefit, the work looked a lot like competitive intelligence modelling. You gather the data available. You define what you're optimising for. You build a framework that's honest about what you know and what you're assuming.\n\nThe values were different. The context was different. But the rigour was the same.\n\nI'm not saying business experience is a substitute for deep sector knowledge. It isn't. But systems thinking, empathy, rigour, and the ability to make decisions under uncertainty — these are not business skills. They're just good thinking. And good thinking is useful everywhere.",
+      "published": true
+    }
+  ]
+}

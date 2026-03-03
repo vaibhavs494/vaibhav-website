@@ -1,0 +1,32 @@
+{
+  "roles": [
+    {
+      "period": "Jan 2026 – Present",
+      "role": "Head of Programme & Operations",
+      "org": "The Social Impact Collective · Remote",
+      "desc": "Leading programme design, operations, and delivery for a social impact organisation focused on systemic change.",
+      "wide": false
+    },
+    {
+      "period": "Sep 2024 – Mar 2025",
+      "role": "Volunteer — Geo-Expansion Strategy",
+      "org": "Reap Benefit · Civic Engagement NGO",
+      "desc": "Built a data-driven geo-expansion model to identify the next focus city for Reap Benefit's civic incubation programme across India.",
+      "wide": false
+    },
+    {
+      "period": "Apr 2022 – Jul 2022",
+      "role": "Volunteer — Entrepreneur Selection",
+      "org": "The Circle India · Education NGO",
+      "desc": "Built the selection model for The Circle's inaugural two-year entrepreneur incubation programme cohort.",
+      "wide": false
+    },
+    {
+      "period": "Apr 2015 – Apr 2016",
+      "role": "English Programme Lead · Institute Student Mentorship Programme",
+      "org": "IIT-Bombay",
+      "desc": "Led an English as a Second Language initiative enabling 300+ freshmen from vernacular backgrounds to integrate into IIT-Bombay's English-medium curriculum. One of the earliest things that showed me what systematic, empathetic design can do for people who just need a different kind of support.",
+      "wide": true
+    }
+  ]
+}

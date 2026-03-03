@@ -1,0 +1,15 @@
+{
+  "hero_role": "Director, Product & Innovation · Procter & Gamble",
+  "hero_desc": "Nine years building consumer-led innovation at scale, establishing R&D capabilities, and doing work that matters beyond the bottom line. Now bringing that to London.",
+  "photo": "",
+  "p1": "I'm a product and innovation leader who has spent the last nine years at P&G India building things that reach millions of people. From establishing the country's first connected consumer research lab in Goa, to launching products that address real gaps in women's health — I care deeply about the quality of what gets made and why.",
+  "p2": "My work sits at the intersection of consumer insight and commercial delivery. I've led large-scale quantitative research, built competitive intelligence models, managed full product lifecycles, and coached teams across functions. The thread throughout: genuine curiosity about what people need, and the discipline to build it well.",
+  "p3": "Beyond P&G, I give time to social impact work — from civic tech NGOs to education programmes at IIT-Bombay. I believe good business and good impact aren't opposites; they're the same thing, done with enough ambition.",
+  "p4": "I'm now relocating to London and actively exploring senior Innovation, R&D, or Consumer Insights Director roles.",
+  "skills": [
+    { "category": "Innovation & Strategy", "tags": "End-to-end innovation, Jobs-to-be-Done, Portfolio management, Fast-cycle development", "highlight": true },
+    { "category": "Consumer & Market Research", "tags": "Large-scale quant & qual, Behavioural science, Competitive intelligence, Kantar", "highlight": false },
+    { "category": "Commercial Delivery", "tags": "P&L management, Go-to-market, Category growth, Stakeholder management", "highlight": false },
+    { "category": "Languages", "tags": "English, Hindi, Gujarati, Spanish (elementary)", "highlight": false }
+  ]
+}
